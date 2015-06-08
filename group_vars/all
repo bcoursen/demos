@@ -1,0 +1,1 @@
+# Site wide defaults should be defined as a ‘group_vars/all’ setting.
