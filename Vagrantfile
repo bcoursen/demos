@@ -15,16 +15,24 @@ Vagrant.configure(2) do |config|
     #   vb.memory = "1024"
     # end
     end
-  config.vm.define "prdtrusty" do |trusty|
+  config.vm.define "trusty" do |trusty|
     trusty.vm.box = "ubuntu/trusty64"
     trusty.vm.network "private_network", ip: "192.168.33.11"
     trusty.vm.hostname = "trusty-host.vagrant.dev"
-    # trusty.landrush.host 'trusty.vagrant.dev', '192.168.33.11'
+    trusty.landrush.host 'trusty.vagrant.dev', '192.168.33.11'
+    trusty.vm.provision "ansible" do |ansible|
+      ansible.playbook = "site.yml"
+      ansible.tags = "auth_keys"
+      end
     end
-  config.vm.define "prdcentos" do |centos|
+  config.vm.define "centos" do |centos|
     centos.vm.box = "centos/7"
     centos.vm.network "private_network", ip: "192.168.33.12"
     centos.vm.hostname = "centos-host.vagrant.dev"
-    # centos.landrush.host 'centos.vagrant.dev', '192.168.33.12'
+    trusty.landrush.host 'trusty.vagrant.dev', '192.168.33.11'
+    centos.vm.provision "ansible" do |ansible|
+      ansible.playbook = "site.yml"
+      ansible.tags = "auth_keys"
+      end
   end
 end
