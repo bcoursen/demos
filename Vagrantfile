@@ -29,10 +29,10 @@ Vagrant.configure(2) do |config|
     centos.vm.box = "centos/7"
     centos.vm.network "private_network", ip: "192.168.33.12"
     centos.vm.hostname = "centos-host.vagrant.dev"
-    trusty.landrush.host 'trusty.vagrant.dev', '192.168.33.11'
+    centos.landrush.host 'trusty.vagrant.dev', '192.168.33.11'
     centos.vm.provision "ansible" do |ansible|
       ansible.playbook = "site.yml"
       ansible.tags = "auth_keys"
       end
-  end
+    end
 end
