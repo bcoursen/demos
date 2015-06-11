@@ -1,14 +1,6 @@
 ---
 - name: Install packages
-  apt: name={{ item }} state=installed
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state=installed"
   with_items:
     - vim
     - net-tools
-  when: ansible_pkg_mgr == 'apt'
-
-- name: Install packages
-  yum: name={{ item }} state=installed
-  with_items:
-    - vim
-    - net-tools
-  when: ansible_pkg_mgr == 'yum'
