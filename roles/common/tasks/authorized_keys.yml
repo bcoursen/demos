@@ -1,0 +1,3 @@
+---
+- name: Add in an auth key to vagrant user
+  authorized_key: user=vagrant key="{{ lookup('file', 'id_rsa.pub') }}"
