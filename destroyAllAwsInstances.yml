@@ -5,7 +5,7 @@
 
   vars:
     ec2_region: us-west-2
-    ec2_hosts: tag_Name_demo-dsilva
+    ec2_hosts: tag_Name_dsilva_demo
 
   tasks:
   - name: Gather EC2 facts
@@ -17,7 +17,7 @@
   connection: local
 
   vars:
-    ec2_hosts: tag_Name_demo-dsilva
+    ec2_hosts: tag_Name_dsilva_demo
     ec2_region: us-west-2
 
   tasks:
