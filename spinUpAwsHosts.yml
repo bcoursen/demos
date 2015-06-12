@@ -2,6 +2,10 @@
 - hosts: localhost
   gather_facts: false
 
+  vars:
+    region: us-west-2
+    count: 1
+
   tasks:
   - name: Launch a couple of ec2 instances to work on!
     ec2:
@@ -9,7 +13,7 @@
       group: dsilva-demo
       image: ami-5189a661
       type: t2.micro
-      region: us-west-2
+      region: "{{ region }}"
       instance_tags:
           Name: "dsilva_demo"
       count: "{{ count }}"
