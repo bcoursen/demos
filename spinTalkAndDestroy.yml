@@ -1,0 +1,72 @@
+---
+##  Launching of our hosts to orchetrate against ##
+- name: Spin up hosts to orchestrate
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    ec2_region: us-west-2
+    count: 1
+
+  tasks:
+  - name: Launch a couple of ec2 instances to work on!
+    ec2:
+      keypair: dsilva
+      group: dsilva-demo
+      image: ami-5189a661
+      type: t2.micro
+      region: "{{ ec2_region }}"
+      instance_tags:
+          Name: "dsilva_demo"
+      count: "{{ count }}"
+      wait: true
+
+## Orchestration on the hosts
+- name: Do some orchestration on the spun up instances
+
+  hosts: "{{ ec2_hosts }}"
+  gather_facts: false
+
+  vars:
+    ec2_hosts: tag_Name_dsilva_demo
+    ec2_region: us-west-2
+    name: "{{ ansible_ec2_instance_id }}"
+
+  tasks:
+  - name: Gather ec2_facts
+    ec2_facts:
+
+  - name: Say hello to our new hosts!
+    shell: echo "Hello, {{ name }}, nice to see you online!"
+
+# Orchestrate the roles on them
+- name: Run our common role on these hosts.
+
+  hosts: "{{ ec2_hosts }}"
+  roles:
+    - common
+
+  vars:
+    ec2_hosts: tag_Name_dsilva_demo
+    ec2_region: us-west-2
+    name: "{{ ansible_ec2_instance_id }}"
+
+## Termination of the servers ##
+- name: Terminate EC2 hosts
+
+  hosts: "{{ ec2_hosts }}"
+  gather_facts: false
+  connection: local
+
+  vars:
+    ec2_hosts: tag_Name_dsilva_demo
+    ec2_region: us-west-2
+
+  tasks:
+  - name: Terminate EC2 hosts
+    ec2:
+      region: "{{ ec2_region }}"
+      instance_ids: "{{ item }}"
+      state: absent
+      wait: True
+    with_items: hostvars[inventory_hostname]['ansible_ec2_instance_id']
