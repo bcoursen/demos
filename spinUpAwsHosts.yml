@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+  - name: Launch a couple of ec2 instances to work on!
+    ec2:
+      keypair: dsilva
+      group: dsilva-demo
+      image: ami-5189a661
+      type: t2.micro
+      region: us-west-2
+      instance_tags:
+          Name: "[demo] dsilva test"
+      count: {{ count }}
+      wait: true
