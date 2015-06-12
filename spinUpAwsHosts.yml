@@ -11,6 +11,6 @@
       type: t2.micro
       region: us-west-2
       instance_tags:
-          Name: "[demo] dsilva test"
+          Name: "dsilva-demo"
       count: "{{ count }}"
       wait: true

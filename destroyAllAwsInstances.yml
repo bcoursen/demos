@@ -4,7 +4,7 @@
   gather_facts: false
 
   vars:
-    ec2_region: eu-central-1
+    ec2_region: us-west-2
     ec2_hosts: tag_Name_demo_dsilva
 
   tasks:
@@ -18,7 +18,7 @@
 
   vars:
     ec2_hosts: tag_Name_demo_dsilva
-    ec2_region: eu-central-1
+    ec2_region: us-west-2
 
   tasks:
   - name: Terminate EC2 hosts
