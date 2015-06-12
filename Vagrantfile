@@ -6,7 +6,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "tower" do |tower|
     tower.vm.box = "tower"
     tower.vm.box_url = "http://vms.ansible.com/ansible-tower-2.1.4-virtualbox.box"
-    tower.vm.network "forwarded_port", guest: 80, host: 8080
+    tower.vm.network "forwarded_port", guest: 80, host: 80
+    tower.vm.network "forwarded_port", guest: 8080, host: 8080
     tower.vm.network "private_network", ip: "192.168.33.10"
     tower.vm.hostname = "ansible-tower.vagrant.dev"
     tower.landrush.host 'tower.vagrant.dev', '10.42.0.42'
@@ -25,7 +26,7 @@ Vagrant.configure(2) do |config|
       ansible.tags = "auth_keys"
       end
     end
-  config.vm.define "centos" do |centos|
+  config.vm.define "prdcentos" do |centos|
     centos.vm.box = "centos/7"
     centos.vm.network "private_network", ip: "192.168.33.12"
     centos.vm.hostname = "centos-host.vagrant.dev"
