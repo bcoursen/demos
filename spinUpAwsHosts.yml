@@ -12,5 +12,5 @@
       region: us-west-2
       instance_tags:
           Name: "[demo] dsilva test"
-      count: {{ count }}
+      count: "{{ count }}"
       wait: true
