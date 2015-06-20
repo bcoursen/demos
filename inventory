@@ -1,0 +1,6 @@
+centos ansible_ssh_host=centos.vagrant.dev
+trusty ansible_ssh_host=trusty.vagrant.dev
+
+[all]
+centos.vagrant.dev ansible_ssh_user=vagrant
+trusty.vagrant.dev ansible_ssh_user=vagrant
