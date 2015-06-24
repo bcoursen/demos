@@ -1,6 +1,6 @@
-centos ansible_ssh_host=centos.vagrant.dev
-trusty ansible_ssh_host=trusty.vagrant.dev
+centos ansible_ssh_host=centos.vagrant.dev ansible_ssh_user=vagrant
+trusty ansible_ssh_host=trusty.vagrant.dev ansible_ssh_user=vagrant
 
 [all]
-centos.vagrant.dev ansible_ssh_user=vagrant
-trusty.vagrant.dev ansible_ssh_user=vagrant
+centos
+trusty
