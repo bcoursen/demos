@@ -16,6 +16,18 @@ Vagrant.configure(2) do |config|
     #   vb.memory = "1024"
     # end
     end
+  config.vm.define "tower2.2" do |tower|
+    tower.vm.box = "tower-2.2.0"
+    tower.vm.network "forwarded_port", guest: 80, host: 80
+    tower.vm.network "forwarded_port", guest: 8080, host: 8080
+    tower.vm.network "private_network", ip: "192.168.33.10"
+    tower.vm.hostname = "ansible-tower.vagrant.dev"
+    tower.landrush.host 'tower.vagrant.dev', '10.42.0.42'
+    # config.vm.network "public_network"
+    # config.vm.provider "virtualbox" do |vb|
+    #   vb.memory = "1024"
+    # end
+    end
   config.vm.define "trusty" do |trusty|
     trusty.vm.box = "ubuntu/trusty64"
     trusty.vm.network "private_network", ip: "192.168.33.11"
