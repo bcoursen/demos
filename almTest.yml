@@ -1,0 +1,15 @@
+---
+- hosts: "{{ target_hosts }}"
+  tasks:
+  - name: debug
+    debug: var=urlDownload
+
+- hosts: DEV
+  tasks:
+  - name: debug
+    debug: var=urlDownload
+
+- hosts: PROD
+  tasks:
+  - name: debug
+    debug: var=urlDownload
