@@ -1,0 +1,9 @@
+---
+- name: Copy motd to target hosts
+  copy: src=motd
+     dest=/etc/motd
+     backup=yes
+     owner=root
+     group=root
+     mode=0644
+     force=yes
