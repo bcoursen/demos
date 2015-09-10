@@ -43,6 +43,7 @@
 - name: Run our common role on these hosts.
 
   hosts: "{{ ec2_hosts }}"
+  become: true
   roles:
     - common
 
