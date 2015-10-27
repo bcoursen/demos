@@ -33,4 +33,3 @@
            dest=~/soluteTraining
            key_file=~/.ssh/id_rsa
            accept_hostkey=yes
-    - name: add ansible.cfg
