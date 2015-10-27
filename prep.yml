@@ -1,6 +1,7 @@
 ---
 - name: Prep for class
   hosts: all
+  gather_facts: false
   tasks:
     - name: Install packages
       yum: name={{ item }} state=latest
@@ -28,6 +29,6 @@
       become: true
     - name: checkout playbook repo
       git: repo=git@github.com:justnems/ansible-demo-examples.git
-           dest=/home/ec2-user
+           dest=/home/ec2-user/ansible-demo-examples
            key_file=~/.ssh/soluteTraining.pem
            accept_hostkey=yes
