@@ -12,6 +12,8 @@
         - gcc
     - name: Install pip
       easy_install: name=pip
+    - name: remove already installed deps
+      yum: name=python-crypto state=absent
     - name: Install ansible deps
       pip: name={{ item }} state=latest
       with_items:
@@ -20,4 +22,3 @@
         - Jinja2
         - httplib2
         - six
-      ignore_errors: true
