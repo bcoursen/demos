@@ -29,4 +29,4 @@
            dest=/home/ec2-user
            key_file=/home/ec2_user/.ssh/soluteTraining.pem
            accept_hostkey=yes
-      sudo: false
+      become: false
