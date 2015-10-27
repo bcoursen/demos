@@ -1,8 +1,6 @@
 ---
 - name: Prep for class
   hosts: all
-  vars:
-    name: "{{ ansible_hostname }}"
   tasks:
     - name: Install packages
       yum: name={{ item }} state=latest
@@ -17,7 +15,7 @@
       become: true
     - name: remove already installed deps
       yum: name=python-crypto state=absent
-      become:true
+      become: true
     - name: Install ansible deps
       pip: name={{ item }} state=latest
       with_items:
