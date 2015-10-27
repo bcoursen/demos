@@ -29,6 +29,6 @@
       become: true
     - name: checkout playbook repo
       git: repo=git@github.com:justnems/ansible-demo-examples.git
-           dest=/home/ec2-user/ansible-demo-examples
+           dest=~/ansible-demo-examples
            key_file=~/.ssh/soluteTraining.pem
            accept_hostkey=yes
