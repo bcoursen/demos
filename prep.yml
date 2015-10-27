@@ -10,6 +10,7 @@
         - python-setuptools
         - python-devel
         - gcc
+        - git
     - name: Install pip
       easy_install: name=pip
     - name: remove already installed deps
@@ -23,3 +24,10 @@
         - httplib2
         - six
         - ansible
+    - name: Copy training key
+      copy: src=~/Downloads/soluteTraining.pem dest=/root/.ssh/soluteTraining.pem mode=0600
+    - name: checkout playbook repo
+      git: repo=git@github.com:justnems/ansible-demo-examples.git
+           dest=/home/ec2-user
+           key=/home/ec2_user/.ssh/soluteTraining.pem
+      sudo: false
