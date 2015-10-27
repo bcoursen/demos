@@ -33,3 +33,5 @@
            dest=~/soluteTraining
            key_file=~/.ssh/id_rsa
            accept_hostkey=yes
+    - name: Remove old playbook repo
+      file: dest=~/ansible-demo-examples state=absent
