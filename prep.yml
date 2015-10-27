@@ -29,7 +29,7 @@
         - ansible
       become: true
     - name: checkout playbook repo
-      git: repo=git@github.com:thaumos/soluteTrainings.git
+      git: repo=git@github.com:thaumos/soluteTraining.git
            dest=~/soluteTraining
            key_file=~/.ssh/id_rsa
            accept_hostkey=yes
