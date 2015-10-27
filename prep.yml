@@ -11,10 +11,13 @@
         - python-devel
         - gcc
         - git
+      become: true
     - name: Install pip
       easy_install: name=pip
+      become: true
     - name: remove already installed deps
       yum: name=python-crypto state=absent
+      become:true
     - name: Install ansible deps
       pip: name={{ item }} state=latest
       with_items:
@@ -24,9 +27,9 @@
         - httplib2
         - six
         - ansible
+      become: true
     - name: checkout playbook repo
       git: repo=git@github.com:justnems/ansible-demo-examples.git
            dest=/home/ec2-user
            key_file=/home/ec2_user/.ssh/soluteTraining.pem
            accept_hostkey=yes
-      become: false
