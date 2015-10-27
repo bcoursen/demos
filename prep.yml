@@ -10,6 +10,7 @@
         - python-devel
         - gcc
         - git
+        - openssh
       become: true
     - name: Install pip
       easy_install: name=pip
