@@ -22,6 +22,7 @@
       pip: name={{ item }} state=latest
       with_items:
         - paramiko
+        - pycrypto
         - PyYAML
         - Jinja2
         - httplib2
