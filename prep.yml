@@ -1,0 +1,22 @@
+---
+- name: Prep for class
+  hosts: all
+  vars:
+    name: "{{ ansible_hostname }}"
+  tasks:
+    - name: Install packages
+      yum: name={{ item }} state=latest
+      with_items:
+        - python-setuptools
+        - gcc
+    - name: Install pip
+      easy_install: pkg=pip state=present
+    - name: Install ansible deps
+      pip: pkg={{ item }} state=latest
+      with_items:
+        - paramiko
+        - PyYAML
+        - Jinja2
+        - httplib2
+        - six
+      ignore_errors: true
