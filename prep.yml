@@ -29,7 +29,8 @@
         - ansible
       become: true
     - name: checkout playbook repo
-      git: repo=git@github.com:justnems/ansible-demo-examples.git
-           dest=~/ansible-demo-examples
-           key_file=~/.ssh/soluteTraining.pem
+      git: repo=git@github.com:thaumos/soluteTrainings.git
+           dest=~/soluteTraining
+           key_file=~/.ssh/id_rsa
            accept_hostkey=yes
+    - name: add ansible.cfg
