@@ -12,7 +12,7 @@
     - name: Install pip
       easy_install: name=pip
     - name: Install ansible deps
-      pip: pkg={{ item }} state=latest
+      pip: name={{ item }} state=latest
       with_items:
         - paramiko
         - PyYAML
