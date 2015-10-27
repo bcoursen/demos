@@ -24,8 +24,6 @@
         - httplib2
         - six
         - ansible
-    - name: Copy training key
-      copy: src=~/Downloads/soluteTraining.pem dest=/root/.ssh/soluteTraining.pem mode=0600
     - name: checkout playbook repo
       git: repo=git@github.com:justnems/ansible-demo-examples.git
            dest=/home/ec2-user
