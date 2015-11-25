@@ -7,5 +7,4 @@
       register: result
 
     - name: Here's our output
-      fail: msg={{ result.stdout }}
-      ignore_errors: true
+      debug: msg={{ result.stdout }}
