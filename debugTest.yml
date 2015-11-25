@@ -7,4 +7,4 @@
       register: result
 
     - name: Here's our output
-      debug: msg={{ result.stdout }}
+      debug: msg="{{ result.stdout }}"
