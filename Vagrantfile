@@ -9,8 +9,8 @@ Vagrant.configure(2) do |config|
     tower.vm.network "forwarded_port", guest: 80, host: 80
     tower.vm.network "forwarded_port", guest: 8080, host: 8080
     tower.vm.network "private_network", ip: "192.168.33.10"
-    tower.vm.hostname = "ansible-tower.vagrant.dev"
-    tower.landrush.host 'tower.vagrant.dev', '10.42.0.42'
+    tower.vm.hostname = "ansible-tower.vagrant.vag"
+    tower.landrush.host 'tower.vagrant.vag', '10.42.0.42'
     # config.vm.network "public_network"
     # config.vm.provider "virtualbox" do |vb|
     #   vb.memory = "1024"
@@ -19,8 +19,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "trusty" do |trusty|
     trusty.vm.box = "ubuntu/trusty64"
     trusty.vm.network "private_network", ip: "192.168.33.11"
-    trusty.vm.hostname = "trusty-host.vagrant.dev"
-    trusty.landrush.host 'trusty.vagrant.dev', '192.168.33.11'
+    trusty.vm.hostname = "trusty-host.vagrant.vag"
+    trusty.landrush.host 'trusty.vagrant.vag', '192.168.33.11'
     trusty.vm.provision "ansible" do |ansible|
       ansible.playbook = "site.yml"
       ansible.tags = "auth_keys"
@@ -29,8 +29,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "centos" do |centos|
     centos.vm.box = "centos/7"
     centos.vm.network "private_network", ip: "192.168.33.12"
-    centos.vm.hostname = "centos-host.vagrant.dev"
-    centos.landrush.host 'centos.vagrant.dev', '192.168.33.12'
+    centos.vm.hostname = "centos-host.vagrant.vag"
+    centos.landrush.host 'centos.vagrant.vag', '192.168.33.12'
     centos.vm.provision "ansible" do |ansible|
       ansible.playbook = "site.yml"
       ansible.tags = "auth_keys"
