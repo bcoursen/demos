@@ -1,0 +1,10 @@
+---
+- name: Let's test debug
+  hosts: all
+  tasks:
+    - name: Shell
+      shell: /usr/bin/uptime
+      register: result
+
+    - name: Here's our output
+      debug: var=result
