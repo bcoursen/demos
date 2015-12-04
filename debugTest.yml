@@ -31,9 +31,9 @@
       tags:
         Name: "{{ id_base }}-{{ item.id }}"
 
-    - name: create output
-      debug:
-        msg: "{% set comma = joiner(',') %}
-              {% for host in ec2.instances -%}
-                  "{{ comma() }}{{ host.dns_name }}"
-              {%- endfor %}"
+  - name: create output
+    debug:
+      msg: "{% set comma = joiner(',') %}
+            {% for host in ec2.instances -%}
+                "{{ comma() }}{{ host.dns_name }}"
+            {%- endfor %}"
