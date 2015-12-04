@@ -35,5 +35,5 @@
     debug:
       msg: "{% set comma = joiner(',') %}
             {% for host in ec2.instances -%}
-                "{{ comma() }}{{ host.dns_name }}"
+                '{{ comma() }}{{ host.dns_name }}'
             {%- endfor %}"
