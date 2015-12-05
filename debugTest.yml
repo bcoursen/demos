@@ -26,9 +26,10 @@
       resource: "{{ item.id }}"
       region: "{{ region }}"
       state: present
+      tags:
+        Name: "{{ id_base }}-{{ item.id }}"
     with_items: ec2.instances
-        tags:
-          Name: "{{ id_base }}-{{ item.id }}"
+
 
   - name: create output
     debug:
