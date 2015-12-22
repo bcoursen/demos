@@ -6,6 +6,7 @@
   vars:
     region: us-west-2
     count: 1
+    id_base: aws-twr
 
   tasks:
   - name: create/launch
