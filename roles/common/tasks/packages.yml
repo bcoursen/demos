@@ -4,26 +4,26 @@
   with_items:
     - vim
     - net-tools
-    # - joe
-    # - htop
-    # - screen
-    # - iptraf
-    # - wireshark
-    # - nmap
-    # - lynx
-    # - sysstat
-    # - xfsprogs
-    # - mutt
-    # - telnet
-    # - ngrep
-    # - python-boto
-    # - python-httplib2
-    # - python-jinja2
-    # - python-pyasn1
-    # - unzip
-    # - pbzip2
-    # - tmux
-    # - tree
-    # - postfix
-    # - bind-utils
-    # - lsof
+    - joe
+    - htop
+    - screen
+    - iptraf
+    - wireshark
+    - nmap
+    - lynx
+    - sysstat
+    - xfsprogs
+    - mutt
+    - telnet
+    - ngrep
+    - python-boto
+    - python-httplib2
+    - python-jinja2
+    - python-pyasn1
+    - unzip
+    - pbzip2
+    - tmux
+    - tree
+    - postfix
+    - bind-utils
+    - lsof
