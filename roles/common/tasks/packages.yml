@@ -4,19 +4,9 @@
   with_items:
     - vim
     - net-tools
-    - screen
-    - iptraf
-    - wireshark
-    - nmap
-    - lynx
-    - sysstat
-    - mutt
-    - telnet
-    - python-boto
-    - python-jinja2
-    - python-pyasn1
-    - unzip
-    - tree
-    - postfix
-    - bind-utils
-    - lsof
+    # - screen
+    # - iptraf
+    # - wireshark
+    # - nmap
+    # - lynx
+    # - sysstat
