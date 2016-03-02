@@ -23,6 +23,7 @@
   tasks:
   - name: Terminate EC2 hosts
     ec2:
+      region: "{{ ec2_region }}"
       instance_tags:
         Name: dsilva_demo
       state: absent
