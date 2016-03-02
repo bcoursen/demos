@@ -14,22 +14,15 @@
 - name: Terminate EC2 hosts
   hosts: localhost
   gather_facts: false
-  # connection: local
+  connection: local
 
   vars:
     ec2_hosts: tag_Name_dsilva_demo
     ec2_region: us-west-2
 
   tasks:
-  # - name: Terminate EC2 hosts
-  #   ec2:
-  #     region: "{{ ec2_region }}"
-  #     instance_ids: "{{ item }}"
-  #     state: absent
-  #     wait: True
-  #   with_items: hostvars[inventory_hostname]['ansible_ec2_instance_id']
-- local_action:
-  module: ec2
-  instance_tags:
-      Name: dsilva_demo
-  state: absent
+  - name: Terminate EC2 hosts
+    ec2:
+      instance_tags: dsilva_demo
+      state: absent
+      wait: True
