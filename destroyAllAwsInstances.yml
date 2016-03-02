@@ -24,7 +24,6 @@
   - name: Terminate EC2 hosts
     ec2:
       region: "{{ ec2_region }}"
-      instance_ids: "{{ item }}"
+      instance_ids: '{{ ec2.instance_ids }}'
       state: absent
       wait: True
-    with_items: hostvars[inventory_hostname]['ansible_ec2_instance_id']
