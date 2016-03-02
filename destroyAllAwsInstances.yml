@@ -28,8 +28,8 @@
   #     state: absent
   #     wait: True
   #   with_items: hostvars[inventory_hostname]['ansible_ec2_instance_id']
-  - local_action:
-    module: ec2
-    instance_tags:
-        Name: dsilva_demo
-    state: absent
+- local_action:
+  module: ec2
+  instance_tags:
+      Name: dsilva_demo
+  state: absent
