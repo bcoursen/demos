@@ -23,6 +23,7 @@
   tasks:
   - name: Terminate EC2 hosts
     ec2:
-      instance_tags: dsilva_demo
+      instance_tags:
+        Name: dsilva_demo
       state: absent
       wait: True
