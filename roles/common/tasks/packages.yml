@@ -4,9 +4,9 @@
   with_items:
     - vim
     - net-tools
-    # - screen
-    # - iptraf
-    # - wireshark
-    # - nmap
-    # - lynx
-    # - sysstat
+    - screen
+    - iptraf
+    - wireshark
+    - nmap
+    - lynx
+    - sysstat
