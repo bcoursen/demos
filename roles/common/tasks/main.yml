@@ -1,4 +1,4 @@
 ---
 - include: packages.yml
 - include: authorized_keys.yml
-- include: motd.yml tags=motd
+# - include: motd.yml tags=motd
