@@ -18,9 +18,6 @@
       region: "{{ region }}"
       instance_tags:
           Name: "dsilva_demo"
+          env: "Production"
       count: "{{ count }}"
       wait: true
-    register: ec2
-  - name: Add launched to group.
-    add_host: hostname={{ item.public_ip }} groupname={{ group }}
-    with_items: ec2.instances
