@@ -6,7 +6,7 @@
   vars:
     region: us-west-2
     count: 1
-    group: Production
+    env: Production
 
   tasks:
   - name: Launch!
@@ -18,6 +18,6 @@
       region: "{{ region }}"
       instance_tags:
           Name: "dsilva_demo"
-          env: "Production"
+          env: "{{ env }}"
       count: "{{ count }}"
       wait: true
