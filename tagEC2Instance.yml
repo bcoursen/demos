@@ -1,0 +1,18 @@
+---
+- name: tag a resource
+  hosts: localhost
+  gather_facts: False
+
+  vars:
+    region: us-west-2
+    env: Production
+    stackID: Databases
+
+  tasks:
+  - name: Tag it!
+    ec2_tag:
+      region: "{{ region }}"
+      resource: "{{ instance_id }}"
+      state: present
+      tags:
+        stackID: "{{ stackID }}"
