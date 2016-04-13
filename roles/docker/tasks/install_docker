@@ -1,6 +1,6 @@
 ---
 - name: Install docker repo
-  copy: src=roles/docker/files/docker.repo path=/etc/yum.repos.d/docker.repo state=file owner=root group=root mode=0644
+  copy: src=roles/docker/files/docker.repo dest=/etc/yum.repos.d/docker.repo owner=root group=root mode=0644
 
 - name: Install docker
   yum: name=docker-engine state=installed
