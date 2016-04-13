@@ -3,12 +3,13 @@
 - name: install docker-python package
   yum: name=docker-python state=installed
 
-- name: whale say container
+- name: centos bash container
   docker:
-    name: whale_say
-    hostname: whale_say-app
-    image: docker/whalesay:latest
+    name: centos
+    hostname: centos_bash
+    image: centos
     pull: always
     state: reloaded
-    command: cowsay {{ loud_noises }}
+    command: bash
+    detach: True
     privileged: True
