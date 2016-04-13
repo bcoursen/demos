@@ -11,4 +11,5 @@
     pull: always
     state: reloaded
     command: /usr/bin/docker-quickstart
-    privileged: true
+    privileged: True
+    detach: True
