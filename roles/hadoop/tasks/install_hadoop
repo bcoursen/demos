@@ -1,0 +1,10 @@
+---
+- name: application container
+  docker:
+    name: hadoop
+    hostname: quickstart.cloudera
+    image: cloudera/quickstart:latest
+    pull: always
+    state: reloaded
+    command: /usr/bin/docker-quickstart
+    privileged: true
