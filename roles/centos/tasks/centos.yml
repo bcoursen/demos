@@ -7,7 +7,7 @@
   docker:
     name: centos
     hostname: centos_bash
-    image: centos
+    image: centos:latest
     pull: always
     state: reloaded
     command: bash
