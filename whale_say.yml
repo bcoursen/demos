@@ -1,6 +1,0 @@
----
-- hosts: all
-  roles:
-    - common
-    - docker
-    - whale_say
