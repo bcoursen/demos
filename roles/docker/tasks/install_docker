@@ -1,0 +1,7 @@
+---
+- name: Install docker repo
+  file: src=roles/docker/files/docker.repo path=/etc/yum.repos.d/docker.repo state=present user=root group=root mode=0644
+
+- name: Install docker
+  yum: name=docker-engine state=installed
+  notify: start_docker
