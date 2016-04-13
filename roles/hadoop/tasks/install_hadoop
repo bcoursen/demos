@@ -9,7 +9,7 @@
     hostname: quickstart.cloudera
     image: cloudera/quickstart:latest
     pull: always
-    state: reloaded
+    state: running
     privileged: True
     detach: True
     command: /usr/bin/docker-quickstart
