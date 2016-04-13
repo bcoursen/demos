@@ -3,4 +3,4 @@
   roles:
     - common
     - docker
-    - whale_say
+    - centos
