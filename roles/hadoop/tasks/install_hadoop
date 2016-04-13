@@ -10,6 +10,6 @@
     image: cloudera/quickstart:latest
     pull: always
     state: reloaded
-    command: /usr/bin/docker-quickstart
     privileged: True
     detach: True
+    command: /usr/bin/docker-quickstart

@@ -7,7 +7,7 @@
   docker:
     name: whale_say
     hostname: whale_say-app
-    image: docker/whalesay
+    image: docker/whalesay:latest
     pull: always
     state: reloaded
     command: cowsay {{ loud_noises }}
