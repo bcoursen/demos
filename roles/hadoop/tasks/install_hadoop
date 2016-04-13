@@ -1,4 +1,8 @@
 ---
+
+- name: install docker-python package
+  yum: name=docker-python state=installed
+
 - name: application container
   docker:
     name: hadoop
