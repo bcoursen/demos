@@ -2,6 +2,9 @@
 - name: Install docker repo
   copy: src=roles/docker/files/docker.repo dest=/etc/yum.repos.d/docker.repo owner=root group=root mode=0644
 
+- name: install the libtool rpm from a remote repo
+    yum: name=ftp://ftp.muug.mb.ca/mirror/centos/7.2.1511/os/x86_64/Packages/libtool-ltdl-2.4.2-20.el7.x86_64.rpm state=present
+
 - name: Install docker
   yum: name=docker-engine state=installed
   notify: start_docker
