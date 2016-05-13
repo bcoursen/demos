@@ -22,4 +22,4 @@
     privileged: True
     detach: True
     ports: 8888:80
-    command: prakhar1989/static-site
+#    command: prakhar1989/static-site
