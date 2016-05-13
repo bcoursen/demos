@@ -7,7 +7,7 @@
   easy_install: name=pip state=latest
 
 - name: pip install docker-python
-  pip: name=docker-py state=installed
+  pip: name=docker-py state=present
 
 #- name: install docker-python package
 #  yum: name="ftp://ftp.icm.edu.pl/vol/rzm5/linux-opensuse/repositories/devel:/languages:/python/openSUSE_Tumbleweed/noarch/python-docker-py-1.7.2-17.2.noarch.rpm" state=installed
