@@ -4,7 +4,7 @@
 #  yum: name=docker-python state=installed
 
 - name: install pip
-- easy_install: name=pip state=latest
+  easy_install: name=pip state=latest
 
 - name: pip install docker-python
   pip: name=docker-py state=installed
