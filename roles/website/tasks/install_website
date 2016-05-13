@@ -16,7 +16,7 @@
   docker:
     name: quicksite
     hostname: docker_site
-    image: docker pull prakhar1989/static-site
+    image: prakhar1989/static-site
     pull: always
     state: running
     privileged: True
