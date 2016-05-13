@@ -1,4 +1,3 @@
 ---
-- include: common.yml
 - include: docker.yml
 - include: website.yml
