@@ -1,0 +1,16 @@
+---
+
+- name: install docker-python package
+  yum: name=docker-python state=installed
+
+- name: application container
+  docker:
+    name: quicksite
+    hostname: docker_site
+    image: docker pull prakhar1989/static-site
+    pull: always
+    state: running
+    privileged: True
+    detach: True
+    ports: 8888:80
+    command: prakhar1989/static-site
