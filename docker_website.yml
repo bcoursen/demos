@@ -1,4 +1,4 @@
 ---
 - include: common.yml
 - include: docker.yml
-- include: hadoop.yml
+- include: website.yml
