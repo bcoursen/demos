@@ -1,0 +1,4 @@
+---
+
+- name: test new added role
+  command: echo Added role worked

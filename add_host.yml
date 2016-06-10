@@ -1,0 +1,9 @@
+---
+
+- hosts: tag_ec2_test
+  roles:
+    - { role: common-test }
+
+- hosts: added
+  roles:
+    - { role: added_hosts }

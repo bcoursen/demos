@@ -1,0 +1,7 @@
+---
+
+- name: echo
+  command: echo Test
+
+- name: add new host to in-memory inventory
+  add_host: name=54.193.47.167 group=added
