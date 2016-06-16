@@ -8,11 +8,11 @@
     ec2_region: us-west-1
     count: 1
     security_group: aws_spinup
-    image: ami-d1315fb1
+    image: ami-ac5f2fcc
     type: t2.micro
 
   tasks:
-  - name: Launch a couple of ec2 instances to work on!
+  - name: Launch some ec2 instances to work on!
     ec2:
       keypair: bcoursen
       group: "{{ security_group }}"
@@ -25,7 +25,11 @@
       count: "{{ count }}"
       wait: true
     register: ec2
-  - debug: msg="{{ ec2 }}" verbosity=2
+  - debug:
+      msg: "{% set comma = joiner(',') %}
+            {% for host in ec2.instances -%}
+                '{{ comma() }}{{ host.dns_name }}'
+            {%- endfor %}"
   - name: Add new instance to host group
     add_host: hostname={{ item.public_ip }} groupname=launched
     with_items: ec2.instances
@@ -38,7 +42,10 @@
   become: True
   gather_facts: True
   roles:
-    - common
+#    - common
+    - docker
+    - website
+    - pause
 
 - name: Terminate instances
   hosts: localhost

@@ -1,2 +1,3 @@
 msg: "{{ ansible_managed }}, greetings User!  You have connected to {{ ansible_hostname }}\n"
 target_url: "https://gist.githubusercontent.com/jsmartin/bb07b94316d6ed0b2561/raw/b8f7fa2e7dcb6108c9d6edd1f63ab7377d0aa245/gistfile1.txt"
+test_var: from_common
