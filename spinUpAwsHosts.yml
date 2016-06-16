@@ -4,20 +4,21 @@
   gather_facts: false
 
   vars:
-    region: us-west-2
-    count: 1
+    region: us-west-1
     env: Production
+    image: ami-d1315fb1
+    count: 1
 
   tasks:
   - name: Launch!
     ec2:
-      keypair: dsilva
-      group: dsilva-demo
-      image: ami-5189a661
+      keypair: bcoursen
+      group: launch-wizard-2
+      image: "{{ image }}"
       type: t2.micro
       region: "{{ region }}"
       instance_tags:
-          Name: "dsilva_demo"
-          env: "{{ env }}"
+          Name: "brian"
+          server: spinup
       count: "{{ count }}"
       wait: true
