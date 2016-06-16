@@ -8,7 +8,7 @@
     ec2_region: us-west-1
     count: 1
     security_group: aws_spinup
-    image: ami-ac5f2fcc
+    image: ami-af4333cf
     type: t2.micro
 
   tasks:

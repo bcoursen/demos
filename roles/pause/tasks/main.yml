@@ -1,4 +1,3 @@
 ---
-- name: Website up! {{ item.public_dns_name }}!
-  command: Echo Check {{ item.public_dns_name }}! T-minus 60 seconds
-- pause: seconds=60
+- name: Website up!
+  pause: seconds=60

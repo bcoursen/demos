@@ -12,14 +12,16 @@
 #- name: install docker-python package
 #  yum: name="ftp://ftp.icm.edu.pl/vol/rzm5/linux-opensuse/repositories/devel:/languages:/python/openSUSE_Tumbleweed/noarch/python-docker-py-1.7.2-17.2.noarch.rpm" state=installed
 
+- name: pull docker image
+  command: "/usr/bin/docker pull prakhar1989/static-site:latest"
+
 - name: application container
   docker:
     name: quicksite
     hostname: docker_site
     image: prakhar1989/static-site:latest
-    pull: always
     state: running
     privileged: True
     detach: True
-    insecure_registry: yes
+    docker_api_version: 1.19
     ports: 8888:80
