@@ -8,12 +8,13 @@
     env: Production
     image: ami-d1315fb1
     count: 1
+    security_group: aws_spinup
 
   tasks:
   - name: Launch!
     ec2:
       keypair: bcoursen
-      group: launch-wizard-2
+      group: "{{ security_group }}"
       image: "{{ image }}"
       type: t2.micro
       region: "{{ region }}"
