@@ -5,19 +5,23 @@
   gather_facts: false
 
   vars:
-    ec2_region: us-west-2
+    ec2_region: us-west-1
     count: 1
+    security_group: aws_spinup
+    image: ami-d1315fb1
+    type: t2.micro
 
   tasks:
   - name: Launch a couple of ec2 instances to work on!
     ec2:
-      keypair: dsilva
-      group: dsilva-demo
-      image: ami-5189a661
-      type: t2.micro
+      keypair: bcoursen
+      group: "{{ security_group }}"
+      image: "{{ image }}"
+      type: "{{ type }}"
       region: "{{ ec2_region }}"
       instance_tags:
-          Name: "dsilva_demo"
+          Name: "brian"
+          server: "spinup"
       count: "{{ count }}"
       wait: true
 
@@ -28,8 +32,8 @@
   gather_facts: false
 
   vars:
-    ec2_hosts: tag_Name_dsilva_demo
-    ec2_region: us-west-2
+    ec2_hosts: tag_Name_brian
+    ec2_region: us-west-1
     name: "{{ ansible_ec2_instance_id }}"
 
   tasks:

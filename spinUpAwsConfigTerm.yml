@@ -1,0 +1,51 @@
+---
+##  Launching of our hosts to orchetrate against ##
+- name: Spin up hosts to orchestrate
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    ec2_region: us-west-1
+    count: 1
+    security_group: aws_spinup
+    image: ami-d1315fb1
+    type: t2.micro
+
+  tasks:
+  - name: Launch a couple of ec2 instances to work on!
+    ec2:
+      keypair: bcoursen
+      group: "{{ security_group }}"
+      image: "{{ image }}"
+      type: "{{ type }}"
+      region: "{{ ec2_region }}"
+      instance_tags:
+          Name: "brian"
+          server: "spinup"
+      count: "{{ count }}"
+      wait: true
+    register: ec2
+  - debug: msg="{{ ec2 }}" verbosity=2
+  - name: Add new instance to host group
+    add_host: hostname={{ item.public_ip }} groupname=launched
+    with_items: ec2.instances
+  - name: Wait for SSH to come up
+    wait_for: host={{ item.public_dns_name }} port=22 delay=60 timeout=320 state=started
+    with_items: ec2.instances
+
+- name: Configure instance(s)
+  hosts: launched
+  become: True
+  gather_facts: True
+  roles:
+    - common
+
+- name: Terminate instances
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Terminate instances that were previously launched
+      ec2:
+        state: 'absent'
+        instance_ids: '{{ ec2.instance_ids }}'
+        region: "us-west-1"
