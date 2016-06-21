@@ -9,7 +9,7 @@
     count: 1
     security_group: aws_spinup
     image: ami-af4333cf
-    type: t2.micro
+    type: t2.small
 
   tasks:
   - name: Launch some ec2 instances to work on!
