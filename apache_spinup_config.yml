@@ -1,0 +1,46 @@
+---
+##  Launching of our hosts to orchetrate against ##
+- name: Spin up hosts to orchestrate
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    ec2_region: us-west-1
+    count: 1
+    security_group: apache
+    image: ami-ac5f2fcc
+    type: t2.micro
+
+  tasks:
+  - name: Launch an apache ec2 instance to work on!
+    ec2:
+      keypair: bcoursen
+      group: "{{ security_group }}"
+      image: "{{ image }}"
+      type: "{{ type }}"
+      region: "{{ ec2_region }}"
+      instance_tags:
+          Name: "brian"
+          server: "apache"
+      count: "{{ count }}"
+      wait: true
+    register: ec2
+  - debug:
+      msg: "{% set comma = joiner(',') %}
+            {% for host in ec2.instances -%}
+                '{{ comma() }}{{ host.dns_name }}'
+            {%- endfor %}"
+  - name: Add new instance to host group
+    add_host: hostname={{ item.public_ip }} groupname=launched
+    with_items: ec2.instances
+  - name: Wait for SSH to come up
+    wait_for: host={{ item.public_dns_name }} port=22 delay=90 timeout=320 state=started
+    with_items: ec2.instances
+
+- name: Configure instance(s)
+  hosts: launched
+  become: True
+  gather_facts: True
+  roles:
+#    - common
+    - apache_demo

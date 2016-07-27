@@ -1,0 +1,30 @@
+---
+- name: install apache
+  yum: name=httpd state=latest
+
+- name: make sure apache directories installed
+  file: path={{ item }} state=directory owner=root group=root mode=0755
+  with_items:
+    - "/var/www/cgi-bin"
+    - "/var/www/error"
+    - "/var/www/html"
+    - "/var/www/icons"
+    - "/var/www/test_site/html"
+    - "/etc/httpd/conf"
+
+- name: copy apache conf
+  template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf owner=root group=root mode=0644
+  notify: httpd_restart
+  tags: httpd_conf
+
+- name: copy test website
+  copy: src={{ item.src }} dest={{ item.dest }} owner=root group=root mode=0644
+  with_items:
+    - { src: 'test.html', dest: '/var/www/html' }
+    - { src: 'new.html', dest: '/var/www/test_site/html/test.html' }
+
+- name: set servcies
+  service: name={{ item.name }} enabled={{ item.status}} state={{ item.state }}
+  with_items:
+    - { name: 'iptables', status: 'no', state: 'stopped' }
+    - { name: 'httpd', status: 'yes', state: 'started' }
