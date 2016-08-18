@@ -1,3 +1,5 @@
 ---
 - name: create user
-  win_user: name=ansible password=password"
+  win_user:
+    name: ansible
+    password: "password"
