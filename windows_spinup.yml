@@ -33,7 +33,7 @@
   - name: Add new instance to host group
     add_host: hostname={{ item.public_ip }} groupname=launched
     with_items: ec2.instances
-  - name: Wait for SSH to come up
+  - name: Wait for RDP to come up
     wait_for: host={{ item.public_dns_name }} port=3389 delay=90 timeout=320 state=started
     with_items: ec2.instances
 
