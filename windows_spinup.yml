@@ -10,6 +10,7 @@
     security_group: windows
     image: ami-6d0b4b0d
     type: t2.micro
+    ansible_winrm_server_cert_validation: ignore
 
   tasks:
   - name: Launch an apache ec2 instance to work on!
