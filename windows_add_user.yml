@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+    - windows
+  vars_files:
+    - group_vars/windows
