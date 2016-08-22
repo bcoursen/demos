@@ -13,7 +13,7 @@
     ansible_winrm_server_cert_validation: ignore
 
   tasks:
-  - name: Launch an apache ec2 instance to work on!
+  - name: Launch an windows ec2 instance to work on!
     ec2:
       keypair: bcoursen
       group: "{{ security_group }}"
