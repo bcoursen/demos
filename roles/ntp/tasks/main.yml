@@ -1,0 +1,13 @@
+---
+- name: install ntp and dependencies
+  yum: name={{ items }} state=present
+  with_items:
+    - ntp
+    - ntpdate
+
+- name: copy ntp.conf
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf owner=root group=root mode=0644
+  notify: ntp_restart
+
+- name: turn ntp service on
+  service: name=ntpd state=started enabled=yes

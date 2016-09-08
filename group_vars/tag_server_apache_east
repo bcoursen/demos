@@ -1,0 +1,3 @@
+ntp0: 0.rhel.pool.ntp.org
+ntp1: 1.rhel.pool.ntp.org
+ntp2: 2.rhel.pool.ntp.org
