@@ -1,6 +1,6 @@
 ---
 - name: install ntp and dependencies
-  yum: name={{ items }} state=present
+  yum: name={{ item }} state=present
   with_items:
     - ntp
     - ntpdate
