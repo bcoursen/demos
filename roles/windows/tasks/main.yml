@@ -1,4 +1,7 @@
 ---
+- name: ping
+  win_ping:
+
 - name: create user
   win_user:
     name: ansible
