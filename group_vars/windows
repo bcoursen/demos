@@ -1,1 +1,5 @@
+#ansible_user: Administrator
+#ansible_password: FU.KYBN*qL@
+ansible_port: 5986
+ansible_connection: winrm
 ansible_winrm_server_cert_validation: ignore
