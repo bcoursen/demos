@@ -26,4 +26,5 @@
         instance_tags:
           Name: "brian"
           server: "windows"
+          role: "conf"
         count: "{{count}}"
