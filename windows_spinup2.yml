@@ -18,12 +18,12 @@
     - name: Launch instance
       local_action:
         module: ec2
-        region: "{{region}}"
+        region: "{{ec2_region}}"
         image: "{{image}}"
         instance_type: "{{type}}"
         group: "{{security_group}}"
         key_name: "bcoursen"
         instance_tags:
-          Name: "Brian"
+          Name: "brian"
           server: "windows"
         count: "{{count}}"
