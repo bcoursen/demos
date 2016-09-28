@@ -3,7 +3,7 @@
   gather_facts: false
   connection: local
   vars_files:
-    - group_vars/windows
+    - group_vars/windows_spinup
 
   vars:
     ec2_region: us-west-1
