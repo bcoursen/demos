@@ -1,0 +1,29 @@
+- name: Launch Windows Instance
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars_files:
+    - group_vars/windows
+
+  vars:
+    ec2_region: us-west-1
+    count: 1
+    security_group: windows
+    image: ami-afbff1cf
+    type: t2.micro
+    ansible_winrm_server_cert_validation: ignore
+
+ # Launch instances with the following parameters.  Register the output.
+  tasks:
+    - name: Launch instance
+      local_action:
+        module: ec2
+        region: "{{region}}"
+        image: "{{image}}"
+        instance_type: "{{type}}"
+        group: "{{security_group}}"
+        key_name: "bcoursen"
+        instance_tags:
+          Name: "Brian"
+          server: "windows"
+        count: "{{count}}"
