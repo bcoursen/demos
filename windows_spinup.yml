@@ -8,7 +8,7 @@
     ec2_region: us-west-1
     count: 1
     security_group: windows
-    image: ami-6d0b4b0d
+    image: ami-afbff1cf
     type: t2.micro
     ansible_winrm_server_cert_validation: ignore
 
@@ -44,4 +44,4 @@
   gather_facts: True
   roles:
 #    - common
-#    - windows_demo
+   - windows
