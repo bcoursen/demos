@@ -1,0 +1,6 @@
+---
+- name: create user
+  win_user:
+    name: ansible
+    password: "P@$sworD"
+    groups: "Administrators"
