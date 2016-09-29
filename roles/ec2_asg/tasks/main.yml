@@ -1,0 +1,22 @@
+---
+- name: create lc
+  ec2_lc:
+    name: brian_test_asg
+    image_id: ami-f6fabd96
+    key_name: bcoursen
+    security_groups: sg-2026a444
+    instance_type: t1.micro
+
+- name: create asg
+  ec2_asg:
+    name: group1
+    region: us-west-1
+    availability_zones: us-west-1a
+    launch_config_name: group1
+    min_size: 1
+    max_size: 3
+    desired_capacity: 1
+    vpc_zone_identifier: subnet-1dfe1d76
+    tags:
+      - name: brian
+        server: asg

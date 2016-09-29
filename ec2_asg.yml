@@ -1,0 +1,9 @@
+---
+- name: Launch ec2 asg group
+  hosts: all
+  gather_facts: false
+  connection: local
+  roles:
+    - ec2_asg
+  vars_files:
+    - group_vars/asg
