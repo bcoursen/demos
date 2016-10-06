@@ -1,0 +1,23 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: apply common configuration to all nodes
+  hosts: all
+  user: centos
+
+  roles:
+    - common
+
+- name: configure and deploy the webservers and application code
+  hosts: webservers
+  user: centos
+
+  roles:
+    - web
+
+- name: deploy MySQL and configure the databases
+  hosts: dbservers
+  user: centos
+
+  roles:
+    - db
