@@ -12,6 +12,9 @@
     image: ami-afbff1cf
     type: t2.micro
     ansible_winrm_server_cert_validation: ignore
+    name: brian
+    server: windows
+    role: conf
 
  # Launch instances with the following parameters.  Register the output.
   tasks:
@@ -24,7 +27,7 @@
         group: "{{security_group}}"
         key_name: "bcoursen"
         instance_tags:
-          Name: "brian"
-          server: "windows"
-          role: "conf"
+          Name: "{{name}}"
+          server: "{{server}}"
+          role: "{{role}}"
         count: "{{count}}"
