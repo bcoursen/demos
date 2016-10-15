@@ -2,8 +2,6 @@
   hosts: localhost
   gather_facts: false
   connection: local
-  vars_files:
-    - group_vars/windows_spinup
 
   vars:
     ec2_region: us-west-1
@@ -21,13 +19,13 @@
     - name: Launch instance
       local_action:
         module: ec2
-        region: "{{ec2_region}}"
-        image: "{{image}}"
-        instance_type: "{{type}}"
-        group: "{{security_group}}"
+        region: "{{ ec2_region }}"
+        image: "{{ image }}"
+        instance_type: "{{ type }}"
+        group: "{{ security_group }}"
         key_name: "bcoursen"
         instance_tags:
-          Name: "{{name}}"
-          server: "{{server}}"
-          role: "{{role}}"
-        count: "{{count}}"
+          Name: "{{ name }}"
+          server: "{{ server }}"
+          role: "{{ role }}"
+        count: "{{ count }}"
