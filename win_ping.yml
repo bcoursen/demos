@@ -2,8 +2,8 @@
 # This playbook uses the win_ping module to test connectivity to Windows hosts
 - name: Ping
   hosts: all
-  vars_files:
-    - group_vars/windows
+  # vars_files:
+  #   - group_vars/windows
 
   tasks:
   - name: ping
