@@ -1,0 +1,26 @@
+- name: Spin up linux host in ec2
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    ec2_region: us-west-1
+    count: 1
+    security_group: apache
+    image: ami-ac5f2fcc
+    type: t2.micro
+    server: test
+
+  tasks:
+  - name: Launch an ec2 instance!
+    ec2:
+      keypair: bcoursen
+      group: "{{ security_group }}"
+      image: "{{ image }}"
+      type: "{{ type }}"
+      region: "{{ ec2_region }}"
+      instance_tags:
+          Name: "brian"
+          server: "{{ server }}"
+      count: "{{ count }}"
+      wait: true
+    register: ec2
