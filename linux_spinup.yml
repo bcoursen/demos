@@ -8,7 +8,7 @@
     image: ami-ac5f2fcc
     type: t2.micro
     # security and server_group tag are the same name
-    security_group: {{ server }}
+    security_group: "{{ server }}"
     server: test
 
   tasks:
