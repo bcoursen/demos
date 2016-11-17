@@ -5,16 +5,17 @@
   vars:
     ec2_region: us-west-1
     count: 1
-    security_group: apache
     image: ami-ac5f2fcc
     type: t2.micro
+    # security and server_group tag are the same name
+    security_group: {{ server }}
     server: test
 
   tasks:
   - name: Launch an ec2 instance!
     ec2:
       keypair: bcoursen
-      group: "{{ security_group }}"
+      group: "{{ server }}"
       image: "{{ image }}"
       type: "{{ type }}"
       region: "{{ ec2_region }}"
