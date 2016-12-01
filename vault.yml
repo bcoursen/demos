@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+    - vault
+  vars_files:
+    - group_vars/vault
