@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+    - install_tower
+  vars_files:
+    - group_vars/tower

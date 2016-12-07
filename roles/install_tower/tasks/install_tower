@@ -1,0 +1,30 @@
+---
+- name: install epel
+  yum: name=http://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm state=installed
+
+- name: install ansible
+  yum: name=ansible state=installed
+
+- name: create tower dir
+  file: path=/opt/tower/ state=directory mode=0755
+
+- name: untar ansible package
+  unarchive: src=https://releases.ansible.com/awx/setup/ansible-tower-setup-{{ tower_version }}.tar.gz dest=/opt/tower/ mode=0755 copy=no
+
+- name: copy tower config file
+  template: src=tower_config.j2 dest=/opt/tower/tower_config mode=0755
+
+- name: config tower
+  shell: ./configure -o ../tower_config chdir=/opt/tower/ansible-tower-setup-{{ tower_version }}
+
+- name: install tower
+  shell: ./setup.sh -c ../tower_config chdir=/opt/tower/ansible-tower-setup-{{ tower_version }}
+
+- name: copy license file
+  copy: src=brian_license dest=/etc/tower/license mode=0644 owner=awx group=awx
+
+- name: set servcies
+  service: name={{ item.name }} enabled={{ item.status}} state={{ item.state }}
+  with_items:
+    - { name: 'iptables', status: 'no', state: 'stopped' }
+    - { name: 'httpd', status: 'yes', state: 'started' }
