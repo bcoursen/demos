@@ -15,10 +15,10 @@
   unarchive: dest=/opt/tower src=/opt/tower/ansible-tower-setup-{{ tower_version }}.tar.gz creates=/opt/tower/ansible-tower-setup-{{ tower_version }} copy=no
 
 - name: setup inventory file
-  template: src=inventory.j2 dest=/opt/tower/ansible-tower-setup-{{ tower_version }}/ mode=0644
+  template: src=inventory.j2 dest=/opt/tower/ansible-tower-setup-{{ tower_version }}/inventory mode=0644
   register: inv
 
-- debug: var=inv 
+- debug: var=inv
 
 - name: run installer
   shell: chdir=/opt/tower/ansible-tower-setup-{{ tower_version }}/ setup.sh
