@@ -21,5 +21,5 @@
 - debug: var=inv
 
 - name: run installer
-  shell: chdir=/opt/tower/ansible-tower-setup-{{ tower_version }}/ ./setup.sh
+  shell: chdir=/opt/tower/ansible-tower-setup-{{ tower_version }}/ sudo ./setup.sh
   when: inv.changed
