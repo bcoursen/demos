@@ -1,0 +1,12 @@
+---
+- name: Hello World
+  hosts: all
+  remote_user: centos
+
+  tasks:
+    - name: date test
+      command: /bin/date
+      register: result
+
+    - name: debug
+      debug: var=result
