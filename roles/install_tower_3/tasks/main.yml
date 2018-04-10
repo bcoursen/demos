@@ -1,0 +1,18 @@
+---
+- name: install epel
+  yum: name=http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=installed
+
+- name: install ansible
+  yum: name=ansible state=installed
+
+- name: create tower dir
+  file: path=/opt/tower/ state=directory mode=0755
+
+- name: download tower installation tarball
+  get_url: url=http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-{{ tower_version }}.tar.gz dest=/opt/tower/ansible-tower-setup-{{ tower_version }}.tar.gz
+
+- name: extract installer
+  unarchive: dest=/opt/tower src=/opt/tower/ansible-tower-setup-{{ tower_version }}.tar.gz creates=/opt/tower/ansible-tower-setup-{{ tower_version }} copy=no
+
+- name: setup inventory file
+  template: src=inventory.j2 dest=/opt/tower/ansible-tower-setup-{{ tower_version }}/ mode=0644

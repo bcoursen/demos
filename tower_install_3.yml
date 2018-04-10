@@ -1,0 +1,5 @@
+---
+- hosts: tower
+  roles:
+    - install_tower_3
+  

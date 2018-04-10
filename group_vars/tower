@@ -1,0 +1,8 @@
+---
+#tower version x.y.z
+tower_version: 3.2.3
+
+#install passwords
+admin_pass: 12asasas
+postgres_pass: postpass
+rabbitmq_pass: rabbitpass
