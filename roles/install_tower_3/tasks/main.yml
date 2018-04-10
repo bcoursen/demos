@@ -16,3 +16,8 @@
 
 - name: setup inventory file
   template: src=inventory.j2 dest=/opt/tower/ansible-tower-setup-{{ tower_version }}/ mode=0644
+  register: inv
+
+- name: run installer
+  shell: chdir=/opt/tower/ansible-tower-setup-{{ tower_version }}/ setup.sh
+  when: inv.changed
